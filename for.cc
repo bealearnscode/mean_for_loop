@@ -9,25 +9,28 @@ using namespace std;
 
 int main()
 {
-	int value;       // value is some positive number n
+	int start, end;  // start and end are positive numbers to providee a range for our equation
  	int total = 0;   // total holds the sum of the first n positive numbers
    	int number;      // the amount of numbers
   	float mean;      // the average of the first n positive numbers
 
-  	cout << "Please enter a positive integer" << endl;
-   	cin >> value;
+  	cout << "Please enter a positive integer to start." << endl;
+   	cin >> start;
+   	
+   	cout << "Please enter a positive integer to end." << endl;
+   	cin >> end;
 
-  	if (value > 0)
+  	if (start > 0)
   	{
-      	for (number = 1; number <= value; number++)
+      	for (number = start; number <= end; number++)
         {
  	  	    total = total + number;
 		}  // curly braces are optional since there is only one statement 
 		
-        mean = total / value;         // note the use of the typecast 
-		                                     // operator here
-		cout << "The mean average of the first " << value
-             << " positive integers is " << mean << endl;
+        mean = static_cast<float>(total) / (end - start + 1);
+        
+		cout << "The mean average of numbers between " << start << 
+		        " and " << end << " is " << mean << "." << endl;
     }
     else 
         cout << "Invalid input - integer must be positive" << endl;
